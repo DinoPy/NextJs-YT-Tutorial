@@ -1,34 +1,34 @@
-import { useRouter } from "next/router";
+import { useRouter } from 'next/router';
 
 function ProductList({ products }) {
-  return (
-    <>
-      <h1> List of products</h1>
-      {products.map((product) => {
-        return (
-          <div key={product.id}>
-            <h2>
-              {" "}
-              {product.id} {product.title} {product.price}{" "}
-            </h2>
-          </div>
-        );
-      })}
-    </>
-  );
+	return (
+		<>
+			<h1> List of products</h1>
+			{products.map((product) => {
+				return (
+					<div key={product.id}>
+						<h2>
+							{' '}
+							{product.id} {product.title} {product.price}{' '}
+						</h2>
+					</div>
+				);
+			})}
+		</>
+	);
 }
 
 export default ProductList;
 
 export async function getStaticProps() {
-  console.log("generating or regenerating product list");
-  const response = await fetch("http://localhost:4000/products");
-  const data = await response.json();
+	console.log('generating or regenerating product list');
+	const response = await fetch('http://localhost:4000/products');
+	const data = await response.json();
 
-  return {
-    props: {
-      products: data,
-    },
-    revalidate: 10,
-  };
+	return {
+		props: {
+			products: data,
+		},
+		revalidate: 10,
+	};
 }
