@@ -1,9 +1,15 @@
-import React from 'react'
+import Head from 'next/head';
+import React from 'react';
 
 const PageNotFound = () => {
-  return (
-    <div>PageNotFound</div>
-  )
-}
+	return (
+		<>
+			<Head>
+				<title>Page Not Found</title>
+			</Head>
+			PageNotFound
+		</>
+	);
+};
 
-export default PageNotFound
+export default PageNotFound;
