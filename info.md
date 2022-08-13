@@ -17,3 +17,11 @@ AUTHENTICATION --- with NextAuth
 - SERVER-SIDE AUTHENTICATION -- we call getServerSideProps and within declare session using getSession function, this function takes as arg the context. Based on the result of the session (if session or not) we can return a certain data.
 
 - wE CAN PASS session from the server side as props and the provider will receive it from pageProps.session and pass it on to the other documents, this way there will be no need for a network call for verification on client end that causes flickering.
+
+- SECURING PAGES SERVER SIDE - we will chech if session and if not we return a redirect object with destination to sign in page and permanent false
+
+- SECURING APIS - we call get session which takes the destructured req, if session exist we do something else we reject with status 401. We can destructure the session and based the information we have access to (locally or via db call) we can establish user's authorization level and repond with relevant information.
+
+- MONGODB can be used as an adapter for the nextauth however the tutorial is outdated in this regards.
+
+- CALLBACKS FOR [...NEXTAUTH] - there are 4 possible callbacks, to get the userid received from outh we need to set the jwt callback which receives the user and token parameters, we can assign the token.user = user so we can have the full info (we return token) then within session user we take the session.user and set it to token.user then we return session

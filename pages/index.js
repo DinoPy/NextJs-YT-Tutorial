@@ -8,18 +8,12 @@ import Link from 'next/link';
 export default function Home() {
 	const [inputValue, setInputValue] = useState('');
 	const { data: session, status } = useSession();
-	console.log(session, status);
-
-	const regex = new RegExp(
-		`^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/gm`
-	);
 
 	return (
 		<div className={styles.container}>
 			<form
 				onSubmit={(e) => {
 					e.preventDefault();
-					console.log(inputValue);
 				}}
 			>
 				<input
@@ -27,7 +21,6 @@ export default function Home() {
 					type='password'
 					onChange={(e) => {
 						setInputValue(e.target.value);
-						console.log(regex.test(inputValue));
 					}}
 					value={inputValue}
 					onInvalid={(e) => {
@@ -35,7 +28,6 @@ export default function Home() {
 							'Please enter 2 digits, 2 upercase, 2 symbols and at least 6 characters'
 						);
 					}}
-					// pattern for password 2 digits 2 or more lowercase 2  upercase 2 special
 					pattern='/^(?=.*\d)(?=.*[A-Z])(?=.*[a-z])(?=.*[^\w\d\s:])([^\s]){8,16}$/gm'
 					required
 				/>
