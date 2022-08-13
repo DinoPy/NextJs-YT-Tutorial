@@ -26,7 +26,7 @@ const Dashboard = () => {
 			if (!session) {
 				signIn();
 			} else {
-				setIsLoading(false);
+				setUserSessionLoading(false);
 			}
 		};
 
